@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borcellle Vases · Perfil IG</title>
+    <link rel="stylesheet" href="estilos/estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- BARRA SUPERIOR -->
+    <div class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fab fa-instagram"></i>
+                <span>borcellle_vases</span>
+            </div>
+            <div class="nav-icons">
+                <i class="fas fa-home"></i>
+                <i class="far fa-compass"></i>
+                <i class="far fa-play-circle"></i>
+                <i class="far fa-heart" id="notificationsIcon"></i>
+                <i class="far fa-user-circle"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- PERFIL (igual que antes) -->
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="profile-avatar-section">
+                <div class="profile-avatar">
+                    <i class="fas fa-gem"></i>
+                </div>
+            </div>
+            
+            <div class="profile-info-section">
+                <div class="profile-username-row">
+                    <h2>borcelllevases</h2>
+                    <button class="edit-profile-btn" id="followBtn">Seguir</button>
+                    <button class="edit-profile-btn secondary" id="messageBtn">
+                        <i class="far fa-envelope"></i> Mensaje
+                    </button>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                
+                <div class="profile-stats">
+                    <div class="stat-item" id="postsStat">
+                        <span class="stat-number">30</span> <span class="stat-label">posts</span>
+                    </div>
+                    <div class="stat-item" id="followersStat">
+                        <span class="stat-number">1.529</span> <span class="stat-label">followers</span>
+                    </div>
+                    <div class="stat-item" id="followingStat">
+                        <span class="stat-number">15</span> <span class="stat-label">following</span>
+                    </div>
+                </div>
+                
+                <div class="profile-bio">
+                    <p class="bio-name">Borcellle Aesthetic Vases</p>
+                    <p class="bio-category">Bohemian Style</p>
+                    <p class="bio-date">Since 2015</p>
+                    <p class="bio-link">www.reallygreatsite.com</p>
+                </div>
+                
+                <div class="profile-actions">
+                    <button class="action-btn" id="followBtnMobile">Seguir</button>
+                    <button class="action-btn" id="messageBtnMobile">Mensaje</button>
+                    <button class="action-btn">Contacto</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- HISTORIAS -->
+        <div class="highlights-container">
+            <div class="highlight">
+                <div class="highlight-circle">
+                    <i class="fas fa-plus"></i>
+                </div>
+                <p>Nuevo</p>
+            </div>
+            <div class="highlight">
+                <div class="highlight-circle has-story">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <p>Natural</p>
+            </div>
+            <div class="highlight">
+                <div class="highlight-circle has-story">
+                    <i class="fas fa-feather"></i>
+                </div>
+                <p>Boho</p>
+            </div>
+            <div class="highlight">
+                <div class="highlight-circle has-story">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <p>Color</p>
+            </div>
+            <div class="highlight">
+                <div class="highlight-circle has-story">
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>2025</p>
+            </div>
+        </div>
+
+        <!-- PESTAÑAS -->
+        <div class="profile-tabs">
+            <div class="tab active" id="postsTab">
+                <i class="fas fa-th"></i> POSTS
+            </div>
+            <div class="tab" id="reelsTab">
+                <i class="fas fa-film"></i> REELS
+            </div>
+            <div class="tab" id="savedTab">
+                <i class="far fa-bookmark"></i> GUARDADOS
+            </div>
+        </div>
+
+        <!-- GRID DE POSTS -->
+        <div class="posts-grid" id="postsGrid"></div>
+    </div>
+
+    <!-- MODAL DE NOTIFICACIÓN -->
+    <div class="notification-modal" id="notificationModal">
+        <div class="modal-content">
+            <i class="fas fa-heart"></i>
+            <p id="notificationMessage"></p>
+        </div>
+    </div>
+
+    <!-- 🆕 NUEVO: MODAL DEL CHATBOT -->
+    <div class="chat-modal" id="chatModal">
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <i class="fas fa-robot"></i>
+                    <div>
+                        <h3>Asistente Borcellle</h3>
+                        <p>Online · Responde al instante</p>
+                    </div>
+                </div>
+                <i class="fas fa-times" id="closeChat"></i>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <!-- Los mensajes se insertan aquí con JavaScript -->
+            </div>
+            
+            <div class="chat-input-area">
+                <div class="quick-replies" id="quickReplies">
+                    <!-- Botones de respuesta rápida -->
+                </div>
+                <div class="input-wrapper">
+                    <input type="text" id="chatInput" placeholder="Escribe un mensaje...">
+                    <i class="fas fa-paper-plane" id="sendMessage"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ⬇️ IMPORTANTE: EL SCRIPT VA JUSTO ANTES DE CERRAR BODY -->
+    <script src="js/script.js"></script>
+</body>
+</html>
