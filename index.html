@@ -2,19 +2,29 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Borcellle Vases · Perfil IG</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Borcellle Vases · Propuesta Redes</title>
     <link rel="stylesheet" href="estilos/estilos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- BARRA DE ESTADO (SOLO MÓVIL) -->
+    <div class="status-bar">
+        <span>9:41</span>
+        <div class="status-icons">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
     <!-- BARRA SUPERIOR -->
     <div class="navbar">
         <div class="nav-container">
             <div class="logo">
                 <i class="fab fa-instagram"></i>
-                <span>borcellle_vases</span>
+                <span>propuesta_redes</span>
             </div>
             <div class="nav-icons">
                 <i class="fas fa-home"></i>
@@ -26,18 +36,18 @@
         </div>
     </div>
 
-    <!-- PERFIL (igual que antes) -->
+    <!-- PERFIL -->
     <div class="profile-container">
         <div class="profile-header">
             <div class="profile-avatar-section">
                 <div class="profile-avatar">
-                    <i class="fas fa-gem"></i>
+                    <i class="fas fa-bullhorn"></i>
                 </div>
             </div>
             
             <div class="profile-info-section">
                 <div class="profile-username-row">
-                    <h2>borcelllevases</h2>
+                    <h2>propuesta_redes</h2>
                     <button class="edit-profile-btn" id="followBtn">Seguir</button>
                     <button class="edit-profile-btn secondary" id="messageBtn">
                         <i class="far fa-envelope"></i> Mensaje
@@ -47,10 +57,10 @@
                 
                 <div class="profile-stats">
                     <div class="stat-item" id="postsStat">
-                        <span class="stat-number">30</span> <span class="stat-label">posts</span>
+                        <span class="stat-number">2</span> <span class="stat-label">posts</span>
                     </div>
                     <div class="stat-item" id="followersStat">
-                        <span class="stat-number">1.529</span> <span class="stat-label">followers</span>
+                        <span class="stat-number">1.5k</span> <span class="stat-label">followers</span>
                     </div>
                     <div class="stat-item" id="followingStat">
                         <span class="stat-number">15</span> <span class="stat-label">following</span>
@@ -58,10 +68,10 @@
                 </div>
                 
                 <div class="profile-bio">
-                    <p class="bio-name">Borcellle Aesthetic Vases</p>
-                    <p class="bio-category">Bohemian Style</p>
-                    <p class="bio-date">Since 2015</p>
-                    <p class="bio-link">www.reallygreatsite.com</p>
+                    <p class="bio-name">Estrategia Digital · Laboratorio</p>
+                    <p class="bio-category">Propuesta de gestión de redes</p>
+                    <p class="bio-date">Presentación · Marzo 2026</p>
+                    <p class="bio-link">@laboratorio_innovacion</p>
                 </div>
                 
                 <div class="profile-actions">
@@ -72,92 +82,163 @@
             </div>
         </div>
 
-        <!-- HISTORIAS -->
+        <!-- HISTORIAS DESTACADAS (ahora con propósito) -->
         <div class="highlights-container">
+            <div class="highlight" id="welcomeHighlight">
+                <div class="highlight-circle has-story">
+                    <i class="fas fa-hand-wave"></i>
+                </div>
+                <p>Bienvenida</p>
+            </div>
+            <div class="highlight">
+                <div class="highlight-circle has-story">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <p>Objetivos</p>
+            </div>
             <div class="highlight">
                 <div class="highlight-circle">
-                    <i class="fas fa-plus"></i>
+                    <i class="fas fa-chart-line"></i>
                 </div>
-                <p>Nuevo</p>
+                <p>Resultados</p>
             </div>
             <div class="highlight">
-                <div class="highlight-circle has-story">
-                    <i class="fas fa-leaf"></i>
+                <div class="highlight-circle">
+                    <i class="fas fa-clock"></i>
                 </div>
-                <p>Natural</p>
-            </div>
-            <div class="highlight">
-                <div class="highlight-circle has-story">
-                    <i class="fas fa-feather"></i>
-                </div>
-                <p>Boho</p>
-            </div>
-            <div class="highlight">
-                <div class="highlight-circle has-story">
-                    <i class="fas fa-palette"></i>
-                </div>
-                <p>Color</p>
-            </div>
-            <div class="highlight">
-                <div class="highlight-circle has-story">
-                    <i class="fas fa-star"></i>
-                </div>
-                <p>2025</p>
+                <p>Timeline</p>
             </div>
         </div>
 
         <!-- PESTAÑAS -->
         <div class="profile-tabs">
             <div class="tab active" id="postsTab">
-                <i class="fas fa-th"></i> POSTS
+                <i class="fas fa-th"></i> <span>PROPUESTA</span>
             </div>
             <div class="tab" id="reelsTab">
-                <i class="fas fa-film"></i> REELS
+                <i class="fas fa-film"></i> <span>EJEMPLOS</span>
             </div>
             <div class="tab" id="savedTab">
-                <i class="far fa-bookmark"></i> GUARDADOS
+                <i class="far fa-bookmark"></i> <span>GUARDADO</span>
             </div>
         </div>
 
-        <!-- GRID DE POSTS -->
+        <!-- GRID DE POSTS (SOLO 2) -->
         <div class="posts-grid" id="postsGrid"></div>
     </div>
 
-    <!-- MODAL DE NOTIFICACIÓN -->
+    <!-- 🆕 MODAL DE BIENVENIDA (ONBOARDING) -->
+    <div class="welcome-modal" id="welcomeModal">
+        <div class="welcome-content">
+            <div class="welcome-header">
+                <i class="fas fa-hand-wave wave-icon"></i>
+                <h2>¡Hola! Soy [Tu Nombre]</h2>
+            </div>
+            
+            <div class="welcome-body">
+                <div class="welcome-section">
+                    <i class="fas fa-user-circle"></i>
+                    <div>
+                        <h3>¿Quién soy?</h3>
+                        <p>Community Manager especializado en laboratorios de innovación y divulgación científica. Con 3 años de experiencia en comunicación digital.</p>
+                    </div>
+                </div>
+                
+                <div class="welcome-section">
+                    <i class="fas fa-bullseye"></i>
+                    <div>
+                        <h3>Propósito de esta página</h3>
+                        <p>Presentar mi propuesta para la gestión de redes del laboratorio. Este mockup simula un feed de Instagram con contenido real que podríamos publicar.</p>
+                    </div>
+                </div>
+                
+                <div class="welcome-section">
+                    <i class="fas fa-lightbulb"></i>
+                    <div>
+                        <h3>¿Qué vas a ver?</h3>
+                        <p>Dos publicaciones tipo carrusel que muestran:</p>
+                        <ul>
+                            <li>📸 Propuesta de contenido visual</li>
+                            <li>🎯 Estrategia de engagement</li>
+                            <li>🔬 Divulgación científica creativa</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="welcome-actions">
+                <button class="welcome-btn primary" id="startExploring">
+                    <i class="fas fa-rocket"></i> ¡Comenzar!
+                </button>
+                <button class="welcome-btn secondary" id="remindLater">
+                    Recordar después
+                </button>
+            </div>
+            
+            <p class="welcome-footer">
+                <i class="fas fa-info-circle"></i>
+                Puedes volver a ver este mensaje en la historia destacada "Bienvenida"
+            </p>
+        </div>
+    </div>
+
+    <!-- MODAL DE CARRUSEL (POST INDIVIDUAL) -->
+    <div class="post-modal" id="postModal">
+        <div class="post-modal-container">
+            <div class="post-modal-header">
+                <i class="fas fa-arrow-left" id="closePostModal"></i>
+                <div class="post-modal-user">
+                    <i class="far fa-user-circle"></i>
+                    <span>propuesta_redes</span>
+                </div>
+                <i class="fas fa-ellipsis-h"></i>
+            </div>
+            
+            <div class="carousel-container" id="carouselContainer">
+                <div class="carousel-track" id="carouselTrack"></div>
+                
+                <button class="carousel-btn prev" id="carouselPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn next" id="carouselNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <div class="carousel-indicators" id="carouselIndicators"></div>
+            </div>
+            
+            <div class="post-modal-content">
+                <div class="post-modal-actions">
+                    <div class="post-actions-left">
+                        <i class="far fa-heart"></i>
+                        <i class="far fa-comment"></i>
+                        <i class="far fa-paper-plane"></i>
+                    </div>
+                    <i class="far fa-bookmark"></i>
+                </div>
+                
+                <div class="post-modal-likes" id="postModalLikes"></div>
+                
+                <div class="post-modal-caption" id="postModalCaption"></div>
+                
+                <div class="post-modal-comments" id="postModalComments"></div>
+                
+                <div class="post-modal-time" id="postModalTime"></div>
+                
+                <div class="post-modal-add-comment">
+                    <i class="far fa-smile"></i>
+                    <input type="text" placeholder="Agrega un comentario..." value="Me encanta esta propuesta!">
+                    <button class="post-btn">Publicar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE NOTIFICACIÓN (para feedback) -->
     <div class="notification-modal" id="notificationModal">
         <div class="modal-content">
             <i class="fas fa-heart"></i>
             <p id="notificationMessage"></p>
-        </div>
-    </div>
-
-    <!-- 🆕 NUEVO: MODAL DEL CHATBOT -->
-    <div class="chat-modal" id="chatModal">
-        <div class="chat-container">
-            <div class="chat-header">
-                <div class="chat-header-info">
-                    <i class="fas fa-robot"></i>
-                    <div>
-                        <h3>Asistente Borcellle</h3>
-                        <p>Online · Responde al instante</p>
-                    </div>
-                </div>
-                <i class="fas fa-times" id="closeChat"></i>
-            </div>
-            
-            <div class="chat-messages" id="chatMessages">
-                <!-- Los mensajes se insertan aquí con JavaScript -->
-            </div>
-            
-            <div class="chat-input-area">
-                <div class="quick-replies" id="quickReplies">
-                    <!-- Botones de respuesta rápida -->
-                </div>
-                <div class="input-wrapper">
-                    <input type="text" id="chatInput" placeholder="Escribe un mensaje...">
-                    <i class="fas fa-paper-plane" id="sendMessage"></i>
-                </div>
-            </div>
         </div>
     </div>
 
