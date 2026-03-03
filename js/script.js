@@ -1,5 +1,6 @@
 // ============================================
 // LABORATORIO MEDICAL - PROPUESTA DE REDES
+// VERSIÓN CORREGIDA
 // ============================================
 
 // ===== 1. SELECCIONAR ELEMENTOS DEL DOM =====
@@ -43,7 +44,7 @@ let followersCount = 1529;
 let currentPostIndex = 0;
 let currentPostData = null;
 
-// ===== 3. DATOS DE LOS CARRUSELES (CON TUS IMÁGENES) =====
+// ===== 3. DATOS DE LOS CARRUSELES =====
 const carruseles = [
     {
         id: 1,
@@ -88,17 +89,22 @@ const carruseles = [
 
 // ===== 4. FUNCIONES DEL MODAL DE BIENVENIDA =====
 function showWelcomeModal() {
+    console.log('🔍 Intentando mostrar modal de bienvenida');
     const hasSeenWelcome = localStorage.getItem('hasSeenWelcome');
     
     if (!hasSeenWelcome) {
+        console.log('✅ Mostrando modal por primera vez');
         welcomeModal.style.display = 'block';
         document.body.style.overflow = 'hidden';
         document.body.style.position = 'fixed';
         document.body.style.width = '100%';
+    } else {
+        console.log('⏭️ Modal ya visto anteriormente');
     }
 }
 
 function closeWelcomeModalFn() {
+    console.log('👋 Cerrando modal de bienvenida');
     welcomeModal.style.display = 'none';
     document.body.style.overflow = '';
     document.body.style.position = '';
@@ -106,26 +112,20 @@ function closeWelcomeModalFn() {
     localStorage.setItem('hasSeenWelcome', 'true');
 }
 
-// ===== 5. FUNCIONES DEL CARRUSEL =====
+// ===== 5. FUNCIONES DEL CARRUSEL (CORREGIDO) =====
 function openPostModal(postId) {
+    console.log('📸 Abriendo post:', postId);
     currentPostData = carruseles.find(p => p.id === postId);
     if (!currentPostData) return;
     
-    currentPostIndex = 0;
+    currentPostIndex = 0;  // ← FORZAR A LA PRIMERA IMAGEN
     
-    // Determinar tipo de imagen
+    // Generar slides
     let slidesHTML = '';
     currentPostData.images.forEach((img, index) => {
-        let imageType = 'standard';
-        if (img.src.includes('CARR-')) {
-            imageType = 'text-heavy';
-        } else if (img.src.includes('POST-')) {
-            imageType = 'square';
-        }
-        
         slidesHTML += `
-            <div class="carousel-slide" data-type="${imageType}" data-index="${index}">
-                <img src="${img.src}" alt="Imagen ${index + 1}" class="carousel-image">
+            <div class="carousel-slide" data-index="${index}">
+                <img src="${img.src}" alt="Imagen ${index + 1}" class="carousel-image" onload="console.log('✅ Imagen cargada: ${img.src}')">
             </div>
         `;
     });
@@ -149,6 +149,9 @@ function openPostModal(postId) {
     postModalComments.innerHTML = commentsHTML;
     postModalTime.innerHTML = `<p>${currentPostData.time} · Ver traducción</p>`;
     
+    // Forzar a la primera slide
+    carouselTrack.style.transform = `translateX(0%)`;
+    
     postModal.style.display = 'block';
     document.body.style.overflow = 'hidden';
     
@@ -157,7 +160,8 @@ function openPostModal(postId) {
     // Eventos indicadores
     document.querySelectorAll('.indicator').forEach(ind => {
         ind.addEventListener('click', function() {
-            goToSlide(parseInt(this.dataset.index));
+            const index = parseInt(this.dataset.index);
+            goToSlide(index);
         });
     });
 }
@@ -165,6 +169,7 @@ function openPostModal(postId) {
 function goToSlide(index) {
     if (!currentPostData || index < 0 || index >= currentPostData.images.length) return;
     
+    console.log('🖼️ Yendo a slide:', index);
     currentPostIndex = index;
     carouselTrack.style.transform = `translateX(-${index * 100}%)`;
     
@@ -196,16 +201,17 @@ function closePostModalFn() {
 
 // ===== 6. FUNCIONES DEL PERFIL =====
 function renderPosts() {
+    console.log('🎨 Renderizando posts con portadas');
     let html = '';
     carruseles.forEach(post => {
-        // Usar la primera imagen como portada
         const portada = post.images[0]?.src || '';
+        console.log(`📌 Post ${post.id} portada:`, portada);
         
         html += `
-            <div class="grid-item" data-id="${post.id}" style="background-image: url('${portada}'); background-size: cover; background-position: center;">
-                <div class="grid-item-content" style="background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding: 15px;">
-                    <i class="fas ${post.icon}" style="font-size: 2rem; margin-bottom: 5px;"></i>
-                    <p style="font-size: 0.9rem; font-weight: 600;">${post.title}</p>
+            <div class="grid-item" data-id="${post.id}" style="background-image: url('${portada}');">
+                <div class="grid-item-content">
+                    <i class="fas ${post.icon}"></i>
+                    <p>${post.title}</p>
                 </div>
                 <div class="multi-icon">
                     <i class="fas fa-images"></i> ${post.images.length}
@@ -244,21 +250,29 @@ function showNotification(message, isSuccess = true) {
 
 // ===== 7. EVENTOS =====
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('🚀 DOM cargado, inicializando...');
     renderPosts();
     updateFollowButton();
-    showWelcomeModal();
-    console.log('🚀 Página cargada correctamente');
+    
+    // Pequeño retraso para asegurar que todo está listo
+    setTimeout(() => {
+        showWelcomeModal();
+    }, 500);
 });
 
-closeWelcomeModal.addEventListener('click', closeWelcomeModalFn);
-startExploring.addEventListener('click', closeWelcomeModalFn);
-remindLater.addEventListener('click', closeWelcomeModalFn);
+// Eventos de bienvenida
+if (closeWelcomeModal) closeWelcomeModal.addEventListener('click', closeWelcomeModalFn);
+if (startExploring) startExploring.addEventListener('click', closeWelcomeModalFn);
+if (remindLater) remindLater.addEventListener('click', closeWelcomeModalFn);
 
-welcomeHighlight.addEventListener('click', () => {
-    closeWelcomeModalFn();
-    showWelcomeModal();
-});
+if (welcomeHighlight) {
+    welcomeHighlight.addEventListener('click', () => {
+        closeWelcomeModalFn();
+        showWelcomeModal();
+    });
+}
 
+// Eventos de seguir
 followBtn.addEventListener('click', () => {
     isFollowing = !isFollowing;
     followersCount = isFollowing ? followersCount + 1 : followersCount - 1;
@@ -269,25 +283,35 @@ followBtn.addEventListener('click', () => {
 
 followBtnMobile.addEventListener('click', () => followBtn.click());
 
+// Eventos de mensaje
 messageBtn.addEventListener('click', () => showNotification('📱 Mensaje enviado (modo demostración)'));
 messageBtnMobile.addEventListener('click', () => showNotification('📱 Mensaje enviado (modo demostración)'));
 notificationsIcon.addEventListener('click', () => showNotification('🔔 No tienes notificaciones nuevas'));
 
+// Eventos de estadísticas
 postsStat.addEventListener('click', () => showNotification('📸 2 publicaciones'));
 followersStat.addEventListener('click', () => showNotification(`👥 ${followersCount.toLocaleString()} seguidores`));
 followingStat.addEventListener('click', () => showNotification('👤 Siguiendo a 15 cuentas'));
 
+// Eventos de pestañas
 postsTab.addEventListener('click', () => showNotification('📱 Mostrando propuesta'));
 reelsTab.addEventListener('click', () => showNotification('🎥 Próximamente'));
 savedTab.addEventListener('click', () => showNotification('🔖 Guarda esta propuesta'));
 
+// Eventos del carrusel
 closePostModal.addEventListener('click', closePostModalFn);
 carouselPrev.addEventListener('click', prevSlide);
 carouselNext.addEventListener('click', nextSlide);
 
+// Cerrar con ESC
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         if (postModal.style.display === 'block') closePostModalFn();
         if (welcomeModal.style.display === 'block') closeWelcomeModalFn();
     }
 });
+
+// Para depuración - mostrar en consola
+console.log('✅ Script cargado correctamente');
+console.log('📸 Carruseles:', carruseles.length);
+console.log('🖼️ Imágenes totales:', carruseles.reduce((acc, p) => acc + p.images.length, 0));
