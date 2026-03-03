@@ -48,8 +48,8 @@ let currentPostData = null;
 const carruseles = [
     {
         id: 1,
-        title: '🔬 Educación en Salud',
-        icon: 'fa-flask',
+        title: '',
+        icon: '',
         color: '#0b3b5c',
         images: [
             { src: 'img/CARR-01.png' },
@@ -68,8 +68,8 @@ const carruseles = [
     },
     {
         id: 2,
-        title: '📍 Información de Contacto',
-        icon: 'fa-map-marker-alt',
+        title: '',
+        icon: '',
         color: '#1a4b6d',
         images: [
             { src: 'img/POST-01.png' },
@@ -87,20 +87,20 @@ const carruseles = [
     }
 ];
 
-// ===== 4. FUNCIONES DEL MODAL DE BIENVENIDA =====
+// ===== FUNCIÓN DE EMERGENCIA - SIEMPRE MUESTRA EL MODAL =====
 function showWelcomeModal() {
-    console.log('🔍 Intentando mostrar modal de bienvenida');
-    const hasSeenWelcome = localStorage.getItem('hasSeenWelcome');
+    console.log('🔍 FORZANDO apertura del modal');
     
-    if (!hasSeenWelcome) {
-        console.log('✅ Mostrando modal por primera vez');
-        welcomeModal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-        document.body.style.position = 'fixed';
-        document.body.style.width = '100%';
-    } else {
-        console.log('⏭️ Modal ya visto anteriormente');
-    }
+    // Ignorar localStorage por ahora
+    // const hasSeenWelcome = localStorage.getItem('hasSeenWelcome');
+    
+    // Mostrar el modal siempre para probar
+    welcomeModal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    
+    console.log('✅ Modal debería estar visible');
 }
 
 function closeWelcomeModalFn() {
