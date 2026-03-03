@@ -3,28 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Borcellle Vases · Propuesta Redes</title>
+    <title>Laboratorio Clínico MEDICAL · Propuesta</title>
     <link rel="stylesheet" href="estilos/estilos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- BARRA DE ESTADO (SOLO MÓVIL) -->
-    <div class="status-bar">
-        <span>9:41</span>
-        <div class="status-icons">
-            <i class="fas fa-signal"></i>
-            <i class="fas fa-wifi"></i>
-            <i class="fas fa-battery-full"></i>
-        </div>
-    </div>
-
     <!-- BARRA SUPERIOR -->
     <div class="navbar">
         <div class="nav-container">
             <div class="logo">
                 <i class="fab fa-instagram"></i>
-                <span>propuesta_redes</span>
+                <span>labclimeca</span>
             </div>
             <div class="nav-icons">
                 <i class="fas fa-home"></i>
@@ -40,14 +30,14 @@
     <div class="profile-container">
         <div class="profile-header">
             <div class="profile-avatar-section">
-                <div class="profile-avatar">
-                    <i class="fas fa-bullhorn"></i>
+                <div class="profile-avatar" id="profileAvatar">
+                    <i class="fas fa-flask"></i>
                 </div>
             </div>
             
             <div class="profile-info-section">
                 <div class="profile-username-row">
-                    <h2>propuesta_redes</h2>
+                    <h2>labclimeca</h2>
                     <button class="edit-profile-btn" id="followBtn">Seguir</button>
                     <button class="edit-profile-btn secondary" id="messageBtn">
                         <i class="far fa-envelope"></i> Mensaje
@@ -68,10 +58,10 @@
                 </div>
                 
                 <div class="profile-bio">
-                    <p class="bio-name">Estrategia Digital · Laboratorio</p>
-                    <p class="bio-category">Propuesta de gestión de redes</p>
-                    <p class="bio-date">Presentación · Marzo 2026</p>
-                    <p class="bio-link">@laboratorio_innovacion</p>
+                    <p class="bio-name">Laboratorio Clínico MEDICAL C.A.</p>
+                    <p class="bio-category">Resultados seguros · Calidad humana</p>
+                    <p class="bio-category">Tu salud merece resultados clínicos seguros y la calidad humana que nos define</p>
+                    <p class="bio-date">Desde 2026</p>
                 </div>
                 
                 <div class="profile-actions">
@@ -82,7 +72,7 @@
             </div>
         </div>
 
-        <!-- HISTORIAS DESTACADAS (ahora con propósito) -->
+        <!-- HISTORIAS DESTACADAS -->
         <div class="highlights-container">
             <div class="highlight" id="welcomeHighlight">
                 <div class="highlight-circle has-story">
@@ -92,83 +82,92 @@
             </div>
             <div class="highlight">
                 <div class="highlight-circle has-story">
-                    <i class="fas fa-bullseye"></i>
+                    <i class="fas fa-flask"></i>
                 </div>
-                <p>Objetivos</p>
+                <p>Servicios</p>
             </div>
             <div class="highlight">
                 <div class="highlight-circle">
-                    <i class="fas fa-chart-line"></i>
+                    <i class="fas fa-users"></i>
                 </div>
-                <p>Resultados</p>
+                <p>Equipo</p>
             </div>
             <div class="highlight">
                 <div class="highlight-circle">
-                    <i class="fas fa-clock"></i>
+                    <i class="fas fa-calendar"></i>
                 </div>
-                <p>Timeline</p>
+                <p>Horarios</p>
             </div>
         </div>
 
         <!-- PESTAÑAS -->
         <div class="profile-tabs">
             <div class="tab active" id="postsTab">
-                <i class="fas fa-th"></i> <span>PROPUESTA</span>
+                <i class="fas fa-th"></i> <span>POSTS</span>
             </div>
             <div class="tab" id="reelsTab">
-                <i class="fas fa-film"></i> <span>EJEMPLOS</span>
+                <i class="fas fa-film"></i> <span>REELS</span>
             </div>
             <div class="tab" id="savedTab">
-                <i class="far fa-bookmark"></i> <span>GUARDADO</span>
+                <i class="far fa-bookmark"></i> <span>GUARDADOS</span>
             </div>
         </div>
 
-        <!-- GRID DE POSTS (SOLO 2) -->
+        <!-- GRID DE POSTS (2 CARRUSELES) -->
         <div class="posts-grid" id="postsGrid"></div>
     </div>
 
-    <!-- 🆕 MODAL DE BIENVENIDA (ONBOARDING) -->
+    <!-- MODAL DE BIENVENIDA (VERSIÓN LABORATORIO) -->
     <div class="welcome-modal" id="welcomeModal">
-        <div class="welcome-content">
-            <div class="welcome-header">
-                <i class="fas fa-hand-wave wave-icon"></i>
-                <h2>¡Hola! Soy [Tu Nombre]</h2>
+        <div class="welcome-content medical-theme">
+            <button class="welcome-close" id="closeWelcomeModal">✕</button>
+            
+            <div class="welcome-header medical-header">
+                <div class="lab-badge">
+                    <i class="fas fa-flask"></i>
+                </div>
+                <h1 class="lab-title">LABORATORIO CLÍNICO<br><span>MEDICAL C.A.</span></h1>
             </div>
             
-            <div class="welcome-body">
-                <div class="welcome-section">
-                    <i class="fas fa-user-circle"></i>
-                    <div>
-                        <h3>¿Quién soy?</h3>
-                        <p>Community Manager especializado en laboratorios de innovación y divulgación científica. Con 3 años de experiencia en comunicación digital.</p>
-                    </div>
+            <div class="welcome-body medical-body">
+                <div class="welcome-greeting">
+                    <i class="fas fa-hand-wave wave-icon"></i>
+                    <h2>¡BIENVENIDOS!</h2>
                 </div>
                 
-                <div class="welcome-section">
-                    <i class="fas fa-bullseye"></i>
-                    <div>
-                        <h3>Propósito de esta página</h3>
-                        <p>Presentar mi propuesta para la gestión de redes del laboratorio. Este mockup simula un feed de Instagram con contenido real que podríamos publicar.</p>
-                    </div>
+                <p class="lab-subtitle">Somos Laboratorio Clínico MEDICAL C.A.</p>
+                
+                <div class="lab-quote">
+                    <i class="fas fa-quote-left"></i>
+                    <p class="quote-text">"Tu salud merece resultados clínicos seguros<br>y la calidad humana que nos define"</p>
+                    <i class="fas fa-quote-right"></i>
                 </div>
                 
-                <div class="welcome-section">
-                    <i class="fas fa-lightbulb"></i>
-                    <div>
-                        <h3>¿Qué vas a ver?</h3>
-                        <p>Dos publicaciones tipo carrusel que muestran:</p>
-                        <ul>
-                            <li>📸 Propuesta de contenido visual</li>
-                            <li>🎯 Estrategia de engagement</li>
-                            <li>🔬 Divulgación científica creativa</li>
-                        </ul>
-                    </div>
+                <div class="lab-divider">
+                    <span>LABORATORIO CLÍNICO MEDICAL C.A.</span>
+                </div>
+                
+                <div class="weather-info">
+                    <i class="fas fa-temperature-high"></i>
+                    <span class="temperature">28°C</span>
+                    <span class="weather-desc">Despejado</span>
+                </div>
+                
+                <div class="welcome-purpose">
+                    <h3><i class="fas fa-bullseye"></i> Propósito de esta página</h3>
+                    <p>Presentar mi propuesta para la gestión de redes sociales del laboratorio. Este mockup simula un feed de Instagram con contenido real que podríamos implementar para:</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Mostrar resultados y servicios</li>
+                        <li><i class="fas fa-check-circle"></i> Compartir contenido educativo</li>
+                        <li><i class="fas fa-check-circle"></i> Humanizar el laboratorio</li>
+                        <li><i class="fas fa-check-circle"></i> Conectar con la comunidad</li>
+                    </ul>
                 </div>
             </div>
             
             <div class="welcome-actions">
                 <button class="welcome-btn primary" id="startExploring">
-                    <i class="fas fa-rocket"></i> ¡Comenzar!
+                    <i class="fas fa-rocket"></i> Ver propuesta
                 </button>
                 <button class="welcome-btn secondary" id="remindLater">
                     Recordar después
@@ -177,24 +176,24 @@
             
             <p class="welcome-footer">
                 <i class="fas fa-info-circle"></i>
-                Puedes volver a ver este mensaje en la historia destacada "Bienvenida"
+                Puedes volver a ver este mensaje en "Bienvenida" (destacadas)
             </p>
         </div>
     </div>
 
-    <!-- MODAL DE CARRUSEL (POST INDIVIDUAL) -->
+    <!-- MODAL DEL CARRUSEL -->
     <div class="post-modal" id="postModal">
         <div class="post-modal-container">
             <div class="post-modal-header">
                 <i class="fas fa-arrow-left" id="closePostModal"></i>
                 <div class="post-modal-user">
                     <i class="far fa-user-circle"></i>
-                    <span>propuesta_redes</span>
+                    <span>labclimeca</span>
                 </div>
                 <i class="fas fa-ellipsis-h"></i>
             </div>
             
-            <div class="carousel-container" id="carouselContainer">
+            <div class="carousel-container">
                 <div class="carousel-track" id="carouselTrack"></div>
                 
                 <button class="carousel-btn prev" id="carouselPrev">
@@ -218,23 +217,20 @@
                 </div>
                 
                 <div class="post-modal-likes" id="postModalLikes"></div>
-                
                 <div class="post-modal-caption" id="postModalCaption"></div>
-                
                 <div class="post-modal-comments" id="postModalComments"></div>
-                
                 <div class="post-modal-time" id="postModalTime"></div>
                 
                 <div class="post-modal-add-comment">
                     <i class="far fa-smile"></i>
-                    <input type="text" placeholder="Agrega un comentario..." value="Me encanta esta propuesta!">
+                    <input type="text" placeholder="Agrega un comentario...">
                     <button class="post-btn">Publicar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL DE NOTIFICACIÓN (para feedback) -->
+    <!-- NOTIFICACIÓN -->
     <div class="notification-modal" id="notificationModal">
         <div class="modal-content">
             <i class="fas fa-heart"></i>
@@ -242,7 +238,6 @@
         </div>
     </div>
 
-    <!-- ⬇️ IMPORTANTE: EL SCRIPT VA JUSTO ANTES DE CERRAR BODY -->
     <script src="js/script.js"></script>
 </body>
 </html>
